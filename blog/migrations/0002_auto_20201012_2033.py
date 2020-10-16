@@ -8,7 +8,7 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0001_initial'),
+        ('blog', '0001_initial'),
     ]
 
     operations = [
@@ -69,6 +69,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='post',
             name='categoria',
-            field=models.ManyToManyField(related_name='get_posts', to='core.Category'),
+            field=models.ManyToManyField(related_name='get_posts', to='blog.Category'),
         ),
     ]

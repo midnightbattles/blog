@@ -1,20 +1,19 @@
-from django.urls import path
+from django.contrib import admin
+from django.urls import path, include
 
-from . import views
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    path("", views.BlogListView.as_view(), name="home"),
-    path("post/new/", views.BlogCreateView.as_view(), name="post_new"),
-    path(
-        "post/<slug:slug>/", views.BlogDetailView.as_view(), name="post_detail"
-    ),
-    path(
-        "post/<int:pk>/edit/", views.BlogUpdateView.as_view(), name="post_edit"
-    ),
-    path(
-        "post/<int:pk>/delete/",
-        views.BlogDeleteView.as_view(),
-        name="post_delete",
-    ),
+    path("admin/", admin.site.urls),
+    path("accounts/", include("django.contrib.auth.urls")),
+    path("accounts/", include("accounts.urls")),
+    path("contact/", include("contact.urls")),
+    path("", include("blog.urls")),
 ]
+
+
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
+    )
