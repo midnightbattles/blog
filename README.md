@@ -15,12 +15,33 @@
 
 ## Configuração para Desenvolvimento
 
+1. Crie o arquivo `.env` na raiz do projeto, adicione as suguintes variáveis no arquivo:
+
+```sh
+# .env
+DEBUG=True
+SECRET_KEY=chave_super_secreta
+ALLOWED_HOSTS=127.0.0.1,.localhost
+EMAIL_HOST=
+EMAIL_HOST_USER=
+EMAIL_HOST_PASSWORD=
+EMAIL_PORT=
+EMAIL_USE_TLS=
+EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend
+```
+
+2. Execute a seguinte sequencia de comandos:
 ```sh
 $ python -m venv .venv && source .venv/bin/activate
 $ pip install -r requirements.txt
 $ python manage.py migrate
 $ python manage.py createsuperuser
+$ python manage.py runserver
 ```
+
+
+
+
 
 ## Histórico de lançamentos
 
